@@ -1,9 +1,9 @@
-import React from "react";
 import { Video } from "./Video"; // interface
+import { TrashIcon, PencilIcon } from "@heroicons/react/solid";
 import ReactPlayer from "react-player";
 import { useNavigate } from "react-router";
 import * as VideoService from "./VideoService";
-import "./VideoItem.css";
+
 
 interface Props {
   video: Video;
@@ -21,18 +21,23 @@ const VideoItem = ({ video, loadVideo }: Props) => {
   };
 
   return (
-    <div className="col-md-4 video-card" style={{ cursor: "pointer" }}>
-      <div className="card card-body">
-        <div className="d-flex justify-content-between">
-          <h3 onClick={() => navigate(`/update/${video._id}`)}>
-            {video.title}
-          </h3>
-          <span className="text-danger" onClick={() => deleteVideo(video._id)}>
-            X
-          </span>
+    <div className="group relative bg-[#fff1f2] rounded-md">
+      <div className="">
+        <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+          <ReactPlayer url={video.url} width="100%" height="100%" />
         </div>
-        <p>{video.description}</p>
-        <ReactPlayer url={video.url} width="100%" height="100%" />
+        <div className="p-4">
+          <div className="mt-4 flex justify-between">
+            <p className="text-md text-black">{video.title}</p>
+            <div className="justify-between">
+              
+              <PencilIcon className="block h-5 w-5 mb-5 text-violet-600" onClick={() => navigate(`/update/${video._id}`)}/>
+              <TrashIcon className="block h-5 w-5 text-red-600" onClick={() => deleteVideo(video._id)}/>
+              
+            </div>
+          </div>
+          <p className="text-sm text-gray-400">{video.description}</p>
+        </div>
       </div>
     </div>
   );

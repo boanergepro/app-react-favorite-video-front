@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
-
+import './index.css';
 
 //components
 import  VideoList from "./components/Videos/VideoList";
@@ -18,7 +18,7 @@ ReactDOM.render(
 
       <Navbar/>
 
-     <div className="container p-4">
+     <div className="">
         <Routes>
           <Route path="/" element={<VideoList/>} />
           <Route path="/new-video" element={<VideoForm/>} />

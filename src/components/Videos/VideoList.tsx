@@ -31,11 +31,17 @@ const VideoList = () => {
     loadVideos();
   }, []);
 
+  // la clase gap es para hacer espacio en las grillas
+
   return (
-    <div className="row">
-      {videos.map((video) => {
-        return <VideoItem video={video} key={video._id} loadVideo={ loadVideos }/>;
-      })}
+    <div className="container mx-auto px-20">
+      <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
+        {videos.map((video) => {
+          return (
+            <VideoItem video={video} key={video._id} loadVideo={loadVideos} />
+          );
+        })}
+      </div>
     </div>
   );
 };

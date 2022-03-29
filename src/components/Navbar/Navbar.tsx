@@ -1,31 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 
 const Navbar = () => {
+  const location = useLocation(); // sirve para saber en que route estamos
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid container">
-        <Link className="navbar-brand" to="/">
+    <nav className="bg-[#fff1f2] mb-20">
+      <div className="relative flex items-center justify-center h-16">
+        <Link
+          className={`mr-5 p-2 rounded-md ${
+            location.pathname != "/" ? "opacity-20" : ""
+          }`}
+          to="/"
+        >
           My Favorite Videos
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+
+        <Link
+          className={`mr-5 p-2 rounded-md ${
+            location.pathname != "/new-video" ? "opacity-20" : ""
+          }`}
+          to="/new-video"
         >
-          <span className="navbar-toggler-icon" />
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
-            <Link className="nav-link" to="/new-video">
-              Create new video
-            </Link>
-          </div>
-        </div>
+          Create new video
+        </Link>
       </div>
     </nav>
   );
